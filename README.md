@@ -1,33 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
 
-#define V 7 // A:0, B:1, C:2, D:3, E:4, F:5, G:6
-
-// --- BÖLÜM 4: HASH MALİYETLERİ ---
-int hashCosts[] = {1, 3, 2, 4, 2, 1, 4}; // A, B, C, D, E, F, G
-
-struct AdjNode {
-    int dest, weight;
-    struct AdjNode* next;
-};
-
-struct Graph {
-    struct AdjNode* head[V];
-};
-
-void addEdge(struct Graph* g, int u, int v, int w) {
-    struct AdjNode* node = (struct AdjNode*)malloc(sizeof(struct AdjNode));
-    node->dest = v; node->weight = w;
-    node->next = g->head[u]; g->head[u] = node;
-}
-
-void dijkstraAnaliz(struct Graph* g, int start, int target, char targetChar) {
-    int dist[V], parent[V], visited[V] = {0};
-    int opCount = 0;
-
-    for(int i=0; i<V; i++) { dist[i] = INT_MAX; parent[i] = -1; }
-    dist[start] = 0;
 
     for(int i=0; i<V; i++) {
         int u = -1, min = INT_MAX;
